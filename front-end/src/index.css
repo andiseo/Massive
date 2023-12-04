@@ -1,0 +1,47 @@
+/* src/App.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root{
+  font-family: Poppins;
+}
+
+.Navbar{
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+button{
+  background-color: #1D3063;
+}
+
+.Card, .sidebar-profile, .content-profile, .contain{
+  border: 0.1px #000;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.header, .text-header{
+  color: #1D3063;
+}
+
+.review, .dbox{
+  background-color: #DBDBDB;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.pick-container, .drop-box, .form-pass, .btn-submit{
+  background: #1D3063;
+}
+
+.drop-container, .pick-box, .old-pass, .btn-confirm{
+  background: #356FB6;
+}
+
+.contain{
+  width: 1240px;
+}
+
+.card-profile{
+  background-color: #DBDBDB;
+}
