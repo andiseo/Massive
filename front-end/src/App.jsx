@@ -11,7 +11,7 @@ import Booking from './pages/Booking'
 import Sign from './pages/Sign'
 import SignUp from './pages/SignUp'
 import Service from './pages/Service'
-// import HomeMitra from './Mitra/HomeMitra'
+import HomeMitra from './Mitra/HomeMitra'
 
 import Dashboard from './pages/Dashboard'
 
@@ -33,13 +33,15 @@ import History from './Mitra/History'
 //trial
 import Trial from './pages/Trial'
 import ProfileMitra from './Mitra/ProfileMitra'
+import OurAdvantagesSection from './pages/OurAdvantagesSection'
 
 function App() {
   return (
     <Router>
       <div>
         <Routes>
-          <Route exact path="/" element={<Home/>} />
+          <Route path="/home" element={<Home/>} />
+          <Route exact path='/' element={<OurAdvantagesSection/>}/>
 
           <Route  path="/dashboard" element={<Dashboard/>} />
 
@@ -54,7 +56,7 @@ function App() {
           <Route path='/booking' element={<Booking />}></Route>
           <Route path='/Sign' element={<Sign />}></Route>
           <Route path='/service' element={<Service/>}></Route>
-          {/* <Route path='/HomeMitra' element={<HomeMitra />}></Route> */}
+          <Route path='/mitra/' element={<HomeMitra />}></Route>
 
 
           <Route path="/customer" element={<Customer />} />
@@ -68,8 +70,8 @@ function App() {
         
         <Route path="/ProfileCust" element={<Profile />} />
         <Route path="/status" element={<Status />} />
-        <Route path="/Order" element={<Order />} />
-        <Route path="/history" element={<History />} />
+        <Route path="/mitra/Order" element={<Order />} />
+        <Route path="/mitra/history" element={<History />} />
         <Route path="/trial" element={<Trial />} />
         <Route path="/mitra/profile" element={<ProfileMitra/>}/>
         </Routes>

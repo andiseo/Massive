@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Cardhisto from '../components/Cardhisto'
+import NavbarMitra from '../components/NavbarMitra'
 
 const History = () => {
   return (
     <div>
-      <Navbar />
+      <NavbarMitra />
       <Cardhisto />
       <Cardhisto />
       <Cardhisto />

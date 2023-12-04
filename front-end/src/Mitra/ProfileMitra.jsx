@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import NavbarMitra from '../components/NavbarMitra';
 const ProfileMitra = () => {  
 
     const [imagePreview, setImagePreview] = useState(null);
@@ -20,7 +20,7 @@ const ProfileMitra = () => {
 
   return (
     <div>
-      <Navbar/>
+      <NavbarMitra/>
       <form style={{backgroundColor:'transparent'}}>
         <div className='flex items-center justify-center gap-12 '>
             <div>

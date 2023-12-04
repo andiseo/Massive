@@ -1,13 +1,15 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import Footer1 from '../components/Footer'
+import NavbarMitra from '../components/NavbarMitra'
+import Image from '../../images/banner.png'
 
 const HomeMitra = () => {
   return (
     <div>
-        <Navbar />
-            <img className='w-screen justify-center' src="images/banner.png" alt="banner" >
-            </img>
+        <NavbarMitra />
+
+             <img className='w-screen justify-center' src={Image} alt="banner" >
+            </img> 
             <div className="content container mx-auto flex justify-center gap-12">
                 <div className="text flex flex-col columns-lg gap-5 my-auto">
                 <div className="text-header font-Poppins text-3xl " style={{fontWeight:'bold',fontSize:'27px'}}>Scale your business with us</div>

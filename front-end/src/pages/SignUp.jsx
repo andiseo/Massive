@@ -63,7 +63,7 @@ const SignUp = () => {
               value={password}
               onChange={(e) => SetPassword(e.target.value)}
               className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black' 
-              type="passwoed"            
+              type="password"            
               placeholder='Password'/>
             <button type='submit' className='btn-submit font-Poppins w-full h-16 mt-2 rounded-md text-white text-lg' >Sign Up</button>
             <div className="center text-center text-base mt-2">Have an already account? <span className='font-medium' >Sign in</span></div>

@@ -2,10 +2,14 @@
 
 import React from 'react';
 import '../assets/style.css';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 
 const OurAdvantagesSection = () => {
   return (
+  <>
+    <Navbar/>
     <div className="advantages-section">
       <h2 className='font-Poppins font-bold'>Our Advantages</h2>
       <div className="advantages-list font-Poppins">
@@ -45,7 +49,8 @@ const OurAdvantagesSection = () => {
     </div>
 
     </div>
-  
+    <Footer/>
+  </>
   );
 };
 
