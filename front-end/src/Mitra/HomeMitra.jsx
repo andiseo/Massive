@@ -7,9 +7,8 @@ const HomeMitra = () => {
   return (
     <div>
         <NavbarMitra />
-
-             <img className='w-screen justify-center' src={Image} alt="banner" >
-            </img> 
+            <img className='w-screen justify-center' src={Image} alt="banner" >
+            </img>              
             <div className="content container mx-auto flex justify-center gap-12">
                 <div className="text flex flex-col columns-lg gap-5 my-auto">
                 <div className="text-header font-Poppins text-3xl " style={{fontWeight:'bold',fontSize:'27px'}}>Scale your business with us</div>

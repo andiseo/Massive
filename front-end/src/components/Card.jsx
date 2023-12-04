@@ -1,6 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router'
 
 const Card = () => {
+  const navigate = useNavigate();
+  function navbooking(){
+    navigate("/booking");
+  }
   return (
     <div className='Card w-72 rounded-md px-3 py-3 mx-5'>
       <img src="images/imgcard.png" alt="" />
@@ -10,7 +15,7 @@ const Card = () => {
           <div className="card-text w-full text-sm">Professional services for house & apartment moving. Within the city and outside the city.</div>
         </div>
         <div className='flex justify-between items-center'>
-          <button className='font-Poppins px-3 h-8 rounded-md text-white text-sm' >Book Now</button>
+          <button onClick={navbooking} className='font-Poppins px-3 h-8 rounded-md text-white text-sm' >Book Now</button>
           <div className="price font-Poppins font-medium text-sm">Rp.150.000</div>
         </div>
       </div>

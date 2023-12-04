@@ -33,24 +33,24 @@ import History from './Mitra/History'
 //trial
 import Trial from './pages/Trial'
 import ProfileMitra from './Mitra/ProfileMitra'
-import OurAdvantagesSection from './pages/OurAdvantagesSection'
+import Landing from './pages/Landing'
+import Signmitra from './Mitra/Signmitra'
 
 function App() {
   return (
     <Router>
       <div>
         <Routes>
+          <Route exact path='/' element={<Landing/>}/>
           <Route path="/home" element={<Home/>} />
-          <Route exact path='/' element={<OurAdvantagesSection/>}/>
-
           <Route  path="/dashboard" element={<Dashboard/>} />
 
           {/* <Route  path="/about" element={<About/>} /> */}
           {/* <Route  path="/contact" element={<Contact/>} /> */}
           {/* <Route path="/Auth/login" element={<Login />} />
           <Route path="/Auth/register" element={<Register />} /> */}
-          
           {/* <Route path="/Home" element={<Home />}></Route> */}
+
           <Route path="/Detail" element={<Detail/>}></Route>
           <Route path='/SignUp' element={<SignUp />}></Route>
           <Route path='/booking' element={<Booking />}></Route>
@@ -58,22 +58,22 @@ function App() {
           <Route path='/service' element={<Service/>}></Route>
           <Route path='/mitra/' element={<HomeMitra />}></Route>
 
-
           <Route path="/customer" element={<Customer />} />
-        <Route path="/patner" element={<Patner />} />
+          <Route path="/patner" element={<Patner />} />
 
-        <Route path="/editcustomer" element={<UpdateCustomer />} />
-        <Route path="/inputcustomer" element={<InsertCustomer />} />
-        <Route path="/viewcutomer" element={<ViewCustomer />} />
-        <Route path="/editpatner" element={<UpdatePatner />} />
-        <Route path="/inputpatner" element={<InputPatner />} />
-        
-        <Route path="/ProfileCust" element={<Profile />} />
-        <Route path="/status" element={<Status />} />
-        <Route path="/mitra/Order" element={<Order />} />
-        <Route path="/mitra/history" element={<History />} />
-        <Route path="/trial" element={<Trial />} />
-        <Route path="/mitra/profile" element={<ProfileMitra/>}/>
+          <Route path="/editcustomer" element={<UpdateCustomer />} />
+          <Route path="/inputcustomer" element={<InsertCustomer />} />
+          <Route path="/viewcutomer" element={<ViewCustomer />} />
+          <Route path="/editpatner" element={<UpdatePatner />} />
+          <Route path="/inputpatner" element={<InputPatner />} />
+          
+          <Route path="/ProfileCust" element={<Profile />} />
+          <Route path="/status" element={<Status />} />
+          <Route path="/mitra/Order" element={<Order />} />
+          <Route path="/mitra/history" element={<History />} />
+          <Route path="/trial" element={<Trial />} />
+          <Route path="/mitra/profile" element={<ProfileMitra/>}/>
+          <Route path="/mitra/signmitra" element={<Signmitra/>}/>
         </Routes>
       </div>
     </Router>

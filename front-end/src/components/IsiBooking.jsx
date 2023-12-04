@@ -1,6 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function IsiBooking() {
+  const navigate = useNavigate();
+  function navbook(){
+    navigate("/status");
+  }
   return (
     <div className='flex dbox items-center justify-center mx-auto p-7 rounded-md my-12' style={{width: '1240px', height: '650px', background: 'white'}}>
 
@@ -29,7 +34,7 @@ function IsiBooking() {
             type="drop" id='drop' placeholder='Drop Of Address'/>
             <input className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black' 
             type="date" id='date' placeholder='Date'/>
-            <button className='font-Poppins w-full h-16 mt-2 rounded-md text-white text-lg' >Book Now</button>
+            <button onClick={navbook} className='font-Poppins w-full h-16 mt-2 rounded-md text-white text-lg' >Book Now</button>
           </form>
         </div>
     </div>

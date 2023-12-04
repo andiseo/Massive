@@ -7,6 +7,10 @@
   font-family: Poppins;
 }
 
+.font-medium{
+  font-weight: 500;
+}
+
 .Navbar{
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
@@ -36,6 +40,10 @@ button{
 
 .drop-container, .pick-box, .old-pass, .btn-confirm{
   background: #356FB6;
+}
+
+.container{
+  width: 1240px;
 }
 
 .contain{
