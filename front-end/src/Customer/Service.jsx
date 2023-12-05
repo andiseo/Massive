@@ -7,7 +7,9 @@ const Service = () => {
   return (
     <div>
         <Navbar/>
+          <div className='flex items-center justify-center'>
             <Carousel/>
+          </div>
         <Footer/>
     </div>
   )
