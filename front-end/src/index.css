@@ -53,3 +53,12 @@ button{
 .card-profile{
   background-color: #DBDBDB;
 }
+
+.order-box{
+  height: 920px;
+}
+
+.carousel{
+  align-items: start;
+  padding: 20px;
+}

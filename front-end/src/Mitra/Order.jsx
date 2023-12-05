@@ -8,8 +8,10 @@ const Order = () => {
     <div>
       <NavbarMitra />
       <img className='w-full justify-center' src="images/banner.png" alt="" />
-      <Cardorder />
-      <Cardorder />
+      <div className='order-box flex justify-center items-start mx-auto carousel carousel-vertical rounded-box' >
+        <Cardorder />
+        <Cardorder />
+      </div>
       <Footer />
     </div>
   )

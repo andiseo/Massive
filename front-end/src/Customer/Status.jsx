@@ -9,7 +9,7 @@ const Status = () => {
   const kondisiStatus = () => {
       setStatus(2)
   }
-
+  
   if(status==1){
     return(
       <>
@@ -51,7 +51,7 @@ const Status = () => {
                   </div>
               </div>
             </div>
-            <button className='w-full h-16 mt-2 rounded-md text-white text-lg' onClick={kondisiStatus} >Confirm</button>
+            <button className='w-full h-16 mt-2 rounded-md text-white text-lg' onClick={kondisiStatus}  >Confirm</button>
         </div>
         </div>
       <Footer />

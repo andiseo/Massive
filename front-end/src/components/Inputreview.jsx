@@ -1,6 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+
 
 const Inputreview = () => {
+  const navigate = useNavigate();
+  function nav(){
+    navigate("/home");
+  }
   return (
     <div className='flex dbox items-center justify-center mx-auto p-7 rounded-md my-12' style={{width: '1240px', height: '650px', background: 'white'}}>
       <div style={{display:'flex', flexDirection:'column',justifyContent:'center',alignItems:'flex-start',gap:'10px'}}>
@@ -23,13 +29,13 @@ const Inputreview = () => {
             </div>
             <div className='items-center'> Date : 12/12/2023</div>
         </div>
-        <div className='pick-container rounded-md p-3'>
-          <div className='text-center text-white m-2 font-medium'>What about our partner service?</div>
-            <form className='p-0 w-full' action="">
-              <input className='bg-white rounded-md w-full h-16' type="text" />
-            </form>        
-        </div>
-        <button className='btn-confirm w-full h-16 mt-2 rounded-md text-white text-lg' >Confirm</button>
+        <form className='bg-white' action="">
+          <div className='pick-container rounded-md p-3'>
+            <div className='text-center text-white m-2 font-medium'>What about our partner service?</div>
+            <input className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black' placeholder=''/>
+          </div>
+          <button onClick={nav} className='font-Poppins w-full h-16 mt-2 rounded-md text-white text-lg btn-confirm' >Send review</button>
+        </form>
       </div> 
     </div>
   )

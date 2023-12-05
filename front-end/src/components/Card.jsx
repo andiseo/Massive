@@ -1,10 +1,10 @@
 import React from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 
 const Card = () => {
   const navigate = useNavigate();
   function navbooking(){
-    navigate("/booking");
+    navigate("/detail");
   }
   return (
     <div className='Card w-72 rounded-md px-3 py-3 mx-5'>

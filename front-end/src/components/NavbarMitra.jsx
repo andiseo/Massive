@@ -6,7 +6,7 @@ const NavbarMitra = () => {
     function  nav(){
         navigate("/mitra/profile");
     }
-  return (
+return (
     <div>
         <div className='Navbar'>
         <div className='container mx-auto'>
@@ -20,13 +20,13 @@ const NavbarMitra = () => {
                 <a className='mx-4 text-lg' href='/mitra/history'>History</a>
             </div>
             <div className='flex items-center'>
-                <button className='font-Poppins px-3 h-8 rounded-md text-white' onClick={nav}>profile</button>
+                <button className='font-Poppins px-3 h-8 rounded-md text-white' onClick={nav}>Profile</button>
             </div>
             </div>  
         </div>
     </div>
     </div>
-  )
+)
 }
 
 export default NavbarMitra
