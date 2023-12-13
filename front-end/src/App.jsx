@@ -21,7 +21,6 @@ import Signmitra from './Mitra/Signmitra'
 
 //Admin
 
-
 function App() {
   return (
     <Router>
@@ -43,7 +42,6 @@ function App() {
           <Route path='/mitra/history' element={<History/>} />
           <Route path='/mitra/order' element={<Order/>} />
           <Route path='/mitra/sign' element={<Signmitra/>} />
-          //Admin
         </Routes>
       </div>
     </Router>

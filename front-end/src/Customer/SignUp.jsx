@@ -1,29 +1,35 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const SignUp = () => {
-  const [name, SetName] = useState("");
-  const [email, SetEmail] = useState("");
-  const [contact, SetContact] = useState("");
-  const [username, SetUsername] = useState("");
-  const [password, SetPassword] = useState("");
-  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    contact: '',
+    username: '',
+    password: '',
+  });
 
-  const saveUser = async (e) => {
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  // Fungsi untuk mengirim data formulir ke API
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      await axios.post('http://localhost:5000/users', {
-        name,
-        email,
-        contact,
-        username,
-        password,
+
+    // Kirim data ke API menggunakan Axios
+    axios.post('http://localhost:4000/users', formData)
+      .then(response => {
+        // Handle response jika diperlukan
+        console.log('Data terkirim:', response.data);
+        // Lakukan sesuatu setelah berhasil mengirim data, jika diperlukan
+      })
+      .catch(error => {
+        // Handle error jika terjadi kesalahan
+        console.error('Error:', error);
       });
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
@@ -34,44 +40,54 @@ const SignUp = () => {
       <div className="form w-1/2 my-auto">
         <div>
           <div className="form-header text-center text-2xl"><span className='font-medium' >Create</span> your account</div>
-          <form onSubmit={saveUser} className='mx-auto p-0 w-1/2 bg-transparent' action="">
-            <input 
-              value={name}
-              onChange={(e) => SetName(e.target.value)} 
-              className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black' 
-              type="text" 
-              placeholder='Enter Name'/>
-            <input 
-              value={email}
-              onChange={(e) => SetEmail(e.target.value)} 
-              className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black' 
-              type="Email" 
-              placeholder='Enter Email'/>
+          <form className='mx-auto p-0 w-1/2 bg-transparent' onSubmit={handleSubmit}>
             <input
-              value={contact}
-              onChange={(e) => SetContact(e.target.value)}
-              className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black' 
-              type="number" 
-              placeholder='Contact'/>
+              className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black'
+              type="text"
+              id='name'
+              placeholder='Your Name'
+              value={formData.name}
+              onChange={handleChange}
+            />
             <input
-              value={username}
-              onChange={(e) => SetUsername(e.target.value)}
-              className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black' 
-              type="username" 
-              placeholder='User name'/>
+              className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black'
+              type="email"
+              id='email'
+              placeholder='Enter Email'
+              value={formData.email}
+              onChange={handleChange}
+            />
             <input
-              value={password}
-              onChange={(e) => SetPassword(e.target.value)}
-              className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black' 
-              type="password"            
-              placeholder='Password'/>
-            <button type='submit' className='btn-submit font-Poppins w-full h-16 mt-2 rounded-md text-white text-lg' >Sign Up</button>
+              className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black'
+              type="text"
+              id='contact'
+              placeholder='Enter contact'
+              value={formData.contact}
+              onChange={handleChange}
+            />
+            <input
+              className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black'
+              type="text"
+              id='username'
+              placeholder='Enter Username'
+              value={formData.username}
+              onChange={handleChange}
+            />
+            <input
+              className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black'
+              type="password"
+              id='password'
+              placeholder='Password'
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <button className='font-Poppins w-full h-16 mt-2 rounded-md text-white text-lg'>Sign Up</button>
             <div className="center text-center text-base mt-2">Have an already account? <span className='font-medium' >Sign in</span></div>
           </form>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignUp
+export default SignUp;
