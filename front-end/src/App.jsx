@@ -1,6 +1,8 @@
 // src/App.jsx
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
+import Auth from './Customer/auth';
 //Customer
 import Landing from './Customer/Landing';
 import Home from './Customer/Home'
@@ -36,6 +38,7 @@ function App() {
           <Route path='/profile' element={<Profile/>} />
           <Route path='/sign' element={<Sign/>} />
           <Route path='/signup' element={<SignUp/>} />
+          <Route path='/auth' element={<Auth/>} />
           //Mitra
           <Route path='/mitra/profile' element={<MitraProfile/>} />
           <Route path='/mitra/home' element={<HomeMitra/>} />
