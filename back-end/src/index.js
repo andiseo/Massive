@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const UserRoute = require('./routes/users.js')
-const AuthRoute = require('./routes/auth.js')
+const PartnerRoute = require('./routes/partners.js')
 const middlewareLogRequest = require('./middleware/logs.js')
 require('dotenv').config()
 
@@ -15,9 +15,9 @@ app.use((req, res, next) => {
 });
 
 app.use(middlewareLogRequest)
-app.use(express.json())
+app.use(express.json()) 
 app.use('/users', UserRoute);
-app.use('/auth', AuthRoute);
+app.use('/partners', PartnerRoute);
 
 app.listen(PORT, () => {
   console.log(`Server up and running in Port ${PORT}`)

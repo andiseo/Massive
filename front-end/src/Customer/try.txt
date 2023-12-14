@@ -1,0 +1,34 @@
+const handleSignIn = async (username, password) => {
+    try {
+      // Ganti URL_API dengan URL yang sesuai
+      const response = await axios.get('http://localhost:4000/users', {
+        params: {
+          username: username,
+          password: password
+        }
+      });
+      // Periksa apakah respon dari API sesuai dengan kriteria yang diinginkan
+      if (response.data && response.data.success) {
+        console.log('Login berhasil');
+        Swal.fire({
+          icon: 'success',
+          title: 'Sign in Successful',
+          text: 'You have successfully Sign in!',
+        });
+      } else {
+        console.log('Login gagal');
+        Swal.fire({
+          icon: 'error',
+          title: 'Login Failed',
+          text: 'Invalid password. Please try again.',
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        });
+      }
+    } catch (error) {
+      // Tangani kesalahan jika ada kesalahan dalam permintaan ke API
+      console.error('Terjadi kesalahan:', error);
+      // Lakukan sesuatu jika terjadi kesalahan dalam proses login
+    }
+  }

@@ -15,19 +15,19 @@ const SignUp = () => {
     setFormData({ ...formData, [id]: value });
   };
 
-  // Fungsi untuk mengirim data formulir ke API
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Kirim data ke API menggunakan Axios
     axios.post('http://localhost:4000/users', formData)
       .then(response => {
-        // Handle response jika diperlukan
         console.log('Data terkirim:', response.data);
-        // Lakukan sesuatu setelah berhasil mengirim data, jika diperlukan
+        Swal.fire({
+          icon: 'success',
+          title: 'Successful',
+          text: 'You have successfully make your profile ^^!',
+        });
       })
       .catch(error => {
-        // Handle error jika terjadi kesalahan
         console.error('Error:', error);
       });
   };

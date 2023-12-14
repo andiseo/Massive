@@ -21,9 +21,9 @@ const Carousel = () => {
                 <Card/>
             </div> 
             <div className="carousel-item h-full">
-                 <Card/>
-                 <Card/>
-                 <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
             </div> 
             <div className="carousel-item h-full">
                 <Card/>

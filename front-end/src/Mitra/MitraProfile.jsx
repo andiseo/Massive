@@ -1,38 +1,88 @@
-import React from 'react'
-import NavbarMitra from '../components/NavbarMitra'
-import Footer from '../components/Footer'
+import React, { useState } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import Img from '../../images/banner.png'
+
 
 const MitraProfile = () => {
-  return (
-    <div>
-      <NavbarMitra />
-      <form className='container mx-auto my-14 bg-transparent'>
-        <div className='flex justify-center items-center gap-10 mb-8'>
-          <div className='rounded-md bg-slate-700 w-1/2 h-72'></div>
-          <div className='w-1/2 flex flex-col gap-5'>
-            <input className='form h-16 mt-2 p-2 rounded-md bg-gray-200 text-black' type="text" placeholder='Bussines Name' />
-            <input className='form h-16 mt-2 p-2 rounded-md bg-gray-200 text-black' type="text" placeholder='Bussines Description' />
-          </div>
-        </div>
-        <div className='flex flex-col gap-5 mb-8'>
-          <input className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black' type="text" placeholder='Bussines Name' />
-          <div className='flex gap-10'>
-            <input className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black' type="text" placeholder='Bussines Name' />
-            <input className='form w-full h-16 mt-2 p-2 rounded-md bg-gray-200 text-black' type="text" placeholder='Bussines Description' />
-          </div>
-        </div>
-        <div className='flex justify-between gap-10'>
-          <div className='rounded-md bg-slate-700 w-1/3 h-36'></div>
-          <div className='rounded-md bg-slate-700 w-1/3 h-36'></div>
-          <div className='rounded-md bg-slate-700 w-1/3 h-36'></div>
-        </div>
-        <div className='flex justify-center'>
-          <button className='w-1/3 h-16 mt-8 rounded-md text-white text-lg' >Save</button>
-        </div>
-      </form>
-      <Footer />
-    </div>
-  )
-}
+  const [formData, setFormData] = useState({
+    name: '',
+    description: '',
+    service: '',
+    price: '',
+    loc: '',
+  });
 
-export default MitraProfile
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post('http://localhost:4000/partners', formData)
+      .then(response => {
+        console.log('Data terkirim:', response.data);
+        Swal.fire({
+          icon: 'success',
+          title: 'Successful',
+          text: 'You have successfully made your profile ^^!',
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+
+  return (
+    <div className='flex flex-col justify-center bg-transparent'>
+    <img src={Img} alt="" />
+    <form className='bg-transparent flex flex-col items-center mx-auto w-1/2 ' onSubmit={handleSubmit}>
+      <input
+        className='form h-16 mt-2 p-2 rounded-md bg-gray-200 text-black w-full'
+        type="text"
+        placeholder='Business Name'
+        id='name'
+        value={formData.name}
+        onChange={handleChange}
+      />
+      <input
+        className='form h-16 mt-2 p-2 rounded-md bg-gray-200 text-black w-full'
+        type="text"
+        placeholder='Business Description'
+        id='description'
+        value={formData.description}
+        onChange={handleChange}
+      />
+      <input
+        className='form h-16 mt-2 p-2 rounded-md bg-gray-200 text-black w-full'
+        type="text"
+        placeholder='Service'
+        id='service'
+        value={formData.service}
+        onChange={handleChange}
+      />
+      <input
+        className='form h-16 mt-2 p-2 rounded-md bg-gray-200 text-black w-full'
+        type="text"
+        placeholder='Price'
+        id='price'
+        value={formData.price}
+        onChange={handleChange}
+      />
+      <input
+        className='form h-16 mt-2 p-2 rounded-md bg-gray-200 text-black w-full'
+        type="text"
+        placeholder='Location'
+        id='loc'
+        value={formData.loc}
+        onChange={handleChange}
+      />
+      {/* Button to submit the form */}
+      <button className='w-full h-16 mt-2 rounded-md text-white text-lg'>Save</button>
+    </form>
+  </div>  
+  );
+};
+
+export default MitraProfile;

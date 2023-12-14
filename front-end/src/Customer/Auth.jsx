@@ -111,24 +111,44 @@ const SignInForm = ({ toggleForm }) => {
     });
   };
 
-
-  const handleSignIn = async (e) => {
-    e.preventDefault();
+  const navigate = useNavigate();
+  
+  const handleSignIn = async (username, password) => {
     try {
       const response = await axios.post('http://localhost:4000/users', {
-        username: formData.username,
-        password: formData.password,
+        email: username,
+        password: password
       });
-      console.log('Login successful:', response.data);
+  
+      if (response.status === 200) {
+        console.log('Login berhasil');
+        Swal.fire({
+          icon: 'success',
+          title: 'Login Successful',
+          text: 'You have successfully logged in!',
+        });
+        // Lakukan penanganan jika login berhasil, seperti navigasi ke halaman dashboard atau penyimpanan token
+      } else {
+        console.log('Login gagal');
+        Swal.fire({
+          icon: 'error',
+          title: 'Login Failed',
+          text: 'Invalid username or password!',
+        });
+        // Lakukan penanganan jika login gagal, seperti menampilkan pesan kesalahan
+      }
     } catch (error) {
-      console.error('Login error:', error.response.data);
+      console.error('Terjadi kesalahan:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Login Failed',
+        text: 'Something went wrong!',
+      });
+      // Tangani kesalahan jika ada kesalahan dalam permintaan ke API, seperti menampilkan pesan kesalahan
     }
   };
+  
 
-  const navigate = useNavigate();
-  function nav(){
-    navigate("/home");
-  }
 
   return (
     <div className='flex justify-center w-screen'>
@@ -155,7 +175,7 @@ const SignInForm = ({ toggleForm }) => {
               value={formData.password}
               onChange={handleInputChange}
             />
-            <button onClick={nav} className='font-Poppins w-full h-16 mt-2 rounded-md text-white text-lg'>Sign in</button>
+            <button className='font-Poppins w-full h-16 mt-2 rounded-md text-white text-lg'>Sign in</button>
           </form>
           <div className='flex justify-center mt-2'>
             <button className='btn-toggle bg-transparent' onClick={toggleForm}>
