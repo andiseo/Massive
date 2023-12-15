@@ -20,7 +20,7 @@ const getAllPartners = async (req, res) => {
   try {
     const [data] = await partnerModel.getAllPartners(); 
     res.json({
-      message: 'Get All Partner Success',
+      // message: 'Get All Partner Success',
       data: data
     });
   } catch (error) {

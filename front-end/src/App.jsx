@@ -13,6 +13,7 @@ import Status from './Customer/Status'
 import Profile from './Customer/Profile'
 import Sign from './Customer/Sign'
 import SignUp from './Customer/SignUp'
+import Layanan from './Customer/Layanan'
 
 //Mitra
 import MitraProfile from './Mitra/MitraProfile'
@@ -38,7 +39,7 @@ function App() {
           <Route path='/profile' element={<Profile/>} />
           <Route path='/sign' element={<Sign/>} />
           <Route path='/signup' element={<SignUp/>} />
-          <Route path='/auth' element={<Auth/>} />
+          <Route path='/layanan' element={<Layanan/>} />
           //Mitra
           <Route path='/mitra/profile' element={<MitraProfile/>} />
           <Route path='/mitra/home' element={<HomeMitra/>} />

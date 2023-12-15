@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-function Service() {
+function Layanan() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function Service() {
   }, []);
 
   return (
-    <div className="Service">
+    <div className="Layanan">
       <Navbar />
       <div className="flex flex-wrap items-start justify-start h-auto py-5 mx-60">
         {data.map(item => (
@@ -46,4 +46,4 @@ function Service() {
   );
 }
 
-export default Service;
+export default Layanan;
