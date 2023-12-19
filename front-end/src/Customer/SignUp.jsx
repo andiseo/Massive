@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import Swal from 'sweetalert';
 const SignUp = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -18,18 +18,37 @@ const SignUp = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:4000/users', formData)
-      .then(response => {
-        console.log('Data terkirim:', response.data);
-        Swal.fire({
-          icon: 'success',
-          title: 'Successful',
-          text: 'You have successfully make your profile ^^!',
+  
+    if (formData.name !== '' && formData.contact !== '' && formData.email !== '' && formData.password !== '' && formData.username !== '') {
+      // Jika formulir tidak kosong, kirim data ke server
+      axios.post('http://localhost:4000/users', formData)
+        .then(response => {
+          console.log('Data terkirim:', response.data);
+          Swal({
+            icon: 'success',
+            title: 'Successful',
+            text: 'You have successfully made your profile ^^!',
+            confirmButtonText: 'OK',
+          });
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          Swal({
+            icon: 'error',
+            title: 'Error',
+            text: 'An error occurred while submitting the form.',
+            confirmButtonText: 'OK',
+          });
         });
-      })
-      .catch(error => {
-        console.error('Error:', error);
+    } else {
+      // Jika formulir kosong, tampilkan sweetalert dengan pesan 'Registration Successful'
+      Swal({
+        icon: 'error',
+        title: 'Error',
+        text: 'An error occurred while submitting the form',
+        confirmButtonText: 'OK',
       });
+    }
   };
 
   return (
@@ -82,7 +101,7 @@ const SignUp = () => {
               onChange={handleChange}
             />
             <button className='font-Poppins w-full h-16 mt-2 rounded-md text-white text-lg'>Sign Up</button>
-            <div className="center text-center text-base mt-2">Have an already account? <span className='font-medium' >Sign in</span></div>
+            <div className="center text-center text-base mt-2">Have an already account? <span className='font-medium' ><a href="/sign">Sign in</a></span></div>
           </form>
         </div>
       </div>

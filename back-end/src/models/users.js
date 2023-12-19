@@ -6,6 +6,13 @@ const getAllUsers = () => {
   return dbPool.execute(SQLQuery)
 }
 
+const getCheckUsers = (username, password) => {
+  const SQLQuery = 'SELECT username, password FROM users WHERE username = ? AND password = ?';
+  const values = [username, password];
+
+  return dbPool.execute(SQLQuery, values);
+};
+
 const createNewUser = (body) => {
   const SQLQuery = `INSERT INTO users (name, email, contact, username, password) 
                     VALUES ('${body.name}', '${body.email}', '${body.contact}', '${body.username}', '${body.password}')`;
@@ -14,5 +21,6 @@ const createNewUser = (body) => {
 
 module.exports = {
   getAllUsers,
-  createNewUser
+  createNewUser,
+  getCheckUsers
 }

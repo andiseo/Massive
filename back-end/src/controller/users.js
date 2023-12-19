@@ -31,6 +31,36 @@ const getAllUsers = async (req, res) => {
   }
 }
 
+const getCheckUsers = async (req, res) => {
+  const { username, password } = req.query;
+
+  try {
+    if (!username || !password) {
+      return res.status(400).json({
+        message: 'Username and password must be provided.',
+      });
+    }
+
+    const result = await usersModel.getCheckUsers(username, password);
+
+    if (result.length > 0 && result[0]!='') {
+      res.json({
+        message: 'Login Successful',
+        data: result[0],
+      });
+    } else {
+      res.status(401).json({
+        message: 'Login Failed. Invalid username or password.',
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      message: 'Error during login',
+      serverMessage: error.message,
+    });
+  }
+};
+
 const updateUsers = (req, res) => {
   const {idUser} = req.params;
   console.log('idUser :', idUser);
@@ -57,4 +87,5 @@ module.exports = {
   createNewUsers,
   updateUsers,
   deleteUser,
+  getCheckUsers,
 }

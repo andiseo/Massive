@@ -5,6 +5,7 @@ const UserController = require('../controller/users.js')
 router.post('/', UserController.createNewUsers)
 //READ - GET
 router.get('/', UserController.getAllUsers)
+router.get('/Sign', UserController.getCheckUsers)
 //Update - PATCH
 router.patch('/:idUser', UserController.updateUsers)
 //Delete - Delete
