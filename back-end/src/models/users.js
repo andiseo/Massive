@@ -19,8 +19,15 @@ const createNewUser = (body) => {
   return dbPool.execute(SQLQuery);
 }
 
+const createOrder = (body) => {
+  const SQLQuery = `INSERT INTO swiftmove.order (idUser, idMitra, name, contact, pickAddress, dropAddress, date, status)
+                    VALUES ('${body.idUser}', '${body.idMitra}', '${body.name}', '${body.contact}', '${body.pickAddress}', '${body.dropAddress}', '${body.date}', '${body.status}')`;
+  return dbPool.execute(SQLQuery);
+}
+
 module.exports = {
   getAllUsers,
   createNewUser,
-  getCheckUsers
+  getCheckUsers,
+  createOrder
 }

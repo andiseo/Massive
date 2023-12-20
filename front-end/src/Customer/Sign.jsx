@@ -59,7 +59,7 @@ const Sign = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button className='font-Poppins w-full h-16 mt-2 rounded-md text-white text-lg bg-black'>Sign in</button>
+            <button className='font-Poppins w-full h-16 mt-2 rounded-md text-white text-lg'>Sign in</button>
             <div className="center text-center text-base mt-2">Don't have an account? <span className='font-medium'><a href="/signup">Sign up</a></span></div>
           </form>
         </div>

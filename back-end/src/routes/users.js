@@ -3,6 +3,7 @@ const router = express.Router();
 const UserController = require('../controller/users.js')
 //CREATE - POST
 router.post('/', UserController.createNewUsers)
+router.post('/order', UserController.createOrder)
 //READ - GET
 router.get('/', UserController.getAllUsers)
 router.get('/Sign', UserController.getCheckUsers)
