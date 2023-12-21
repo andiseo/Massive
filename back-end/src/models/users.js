@@ -7,7 +7,7 @@ const getAllUsers = () => {
 }
 
 const getCheckUsers = (username, password) => {
-  const SQLQuery = 'SELECT username, password FROM users WHERE username = ? AND password = ?';
+  const SQLQuery = 'SELECT * FROM users WHERE username = ? AND password = ?';
   const values = [username, password];
 
   return dbPool.execute(SQLQuery, values);
@@ -25,9 +25,51 @@ const createOrder = (body) => {
   return dbPool.execute(SQLQuery);
 }
 
+const getStatus = (body) => {
+  const SQLQuery = `SELECT
+                    swiftmove.order.id,
+                    swiftmove.order.idUser,
+                    swiftmove.order.idMitra,
+                    swiftmove.order.name AS nameUser,
+                    swiftmove.order.contact,
+                    swiftmove.order.pickAddress,
+                    swiftmove.order.dropAddress,
+                    swiftmove.order.date,
+                    swiftmove.order.status,
+                    swiftmove.partners.*
+                  FROM
+                    swiftmove.order
+                  INNER JOIN
+                    swiftmove.partners
+                  ON
+                    swiftmove.order.idMitra = swiftmove.partners.idpartnes
+                  WHERE
+                    swiftmove.order.idUser = '${body.idUser}' AND (swiftmove.order.status = '1' OR swiftmove.order.status = '2');`;
+                    return dbPool.execute(SQLQuery);
+                  };
+
+const submitOrder = (body) => {
+  const SQLQuery = `UPDATE swiftmove.order SET status='3' WHERE (idUser='${body.idUser}')`;
+  return dbPool.execute(SQLQuery);
+}
+
+const getIdOrder = (body) => {
+  const SQLQuery = `SELECT id,idMitra FROM swiftmove.order WHERE (idUser='${body.idUser}')`;
+  return dbPool.execute(SQLQuery);
+}
+
+const insertUlasan = (idOrder,idMitra,body) => {
+  const SQLQuery = `INSERT INTO swiftmove.ulasan (idOrder, idMitra, ulasan) VALUES ('${idOrder}', '${idMitra}', '${body.ulasan}')`;
+  return dbPool.execute(SQLQuery);
+}
+
 module.exports = {
   getAllUsers,
   createNewUser,
   getCheckUsers,
-  createOrder
+  createOrder,
+  getStatus,
+  submitOrder,
+  getIdOrder,
+  insertUlasan
 }

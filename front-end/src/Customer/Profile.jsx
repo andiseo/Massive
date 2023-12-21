@@ -1,12 +1,13 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import NavbarLogin from '../components/NavbarLogin'
 import Footer from '../components/Footer'
 import Userprofile from '../components/Userprofile'
 import Userpass from '../components/Userpass'
 import { useState } from 'react'
-
+import { useNavigate } from 'react-router-dom';
 const Profile = () => {
   const [profile,setProfile]=useState(1);
+  const navigate = useNavigate();
 
   const kondisiProfile = () => {
     if(profile==1){
@@ -16,15 +17,19 @@ const Profile = () => {
     }
   }
 
+  function logout(){
+    navigate('/');
+  }
+
   if(profile==1){
     return (
       <div>
-        <Navbar />
+        <NavbarLogin />
             <div className='flex justify-center items-center m-20 gap-2'>
             <div className='sidebar-profile flex flex-col justify-center rounded-md w-64 bg-white items-start gap-2 p-3 h-60'>
               <button className='btn-profile bg-transparent text-lg font-medium'>My Profile</button>
               <button className='btn-profile bg-transparent text-lg' onClick={kondisiProfile}>Password</button>
-              <button className='btn-profile bg-transparent text-lg'>Logout</button>
+              <button className='btn-profile bg-transparent text-lg' onClick={logout}>Logout</button>
               <hr />
             </div>
               <div className='content-profile flex flex-col justify-center rounded-md w-1/3 bg-white items-start gap-2 p-3 h-60'>
@@ -68,12 +73,12 @@ const Profile = () => {
   if(profile == 2){
     return(
       <>
-      <Navbar />
+      <NavbarLogin />
         <div className='flex justify-center items-center m-20 gap-4'>
           <div className='sidebar-profile flex flex-col justify-center rounded-md w-64 bg-white items-start gap-2 p-3 h-60'>
             <button className='btn-profile bg-transparent text-lg' onClick={kondisiProfile}>My Profile</button>
             <button className='btn-profile bg-transparent text-lg font-medium'>Password</button>
-            <button className='btn-profile bg-transparent text-lg'>Logout</button>
+            <button className='btn-profile bg-transparent text-lg' onClick={logout}>Logout</button>
             <hr />
           </div>
           <div className='content-profile flex flex-col justify-center rounded-md w-1/3 bg-white items-start gap-2 p-3 h-60'>

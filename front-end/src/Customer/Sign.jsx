@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+
 const Sign = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +24,7 @@ const Sign = () => {
           icon: 'success',
           button: 'OK',
         });
+        localStorage.setItem('idUser', data.data[0].id);
         navigate("/home");
       } else {
         // Login failed, you can handle the failed login here

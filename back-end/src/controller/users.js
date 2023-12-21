@@ -21,7 +21,7 @@ const createOrder = async (req, res) => {
   try{
     await usersModel.createOrder(body);
     res.json({
-      message : 'Create New User Success',
+      message : 'Create New Order Success',
       data: body
     })
   } catch (error) {
@@ -46,6 +46,27 @@ const getAllUsers = async (req, res) => {
     })
   }
 }
+
+const getStatus = async (req, res) => {
+  const { body } = req;
+
+  try {
+    // Eksekusi model untuk mendapatkan status
+    const statusData = await usersModel.getStatus(body);
+
+    // Kirim respons JSON dengan data status
+    res.json({
+      message: 'Get Status Success',
+      data: statusData[0],
+    });
+  } catch (error) {
+    // Tangani kesalahan dan kirim respons status 500
+    res.status(500).json({
+      message: 'Error getting status',
+      serverMessage: error,
+    });
+  }
+};
 
 const getCheckUsers = async (req, res) => {
   const { username, password } = req.query;
@@ -98,6 +119,39 @@ const deleteUser = (req, res) => {
   });
 }
 
+const submitOrder = async (req, res) => {
+  const {body} = req;
+  try{
+    await usersModel.submitOrder(body);
+    const data = await usersModel.getIdOrder(body);
+    await usersModel.insertUlasan(data[0][0].id, data[0][0].idMitra, body);
+    res.json({data : body.idUser, Data : data[0]})
+    
+
+    
+  } catch (error) {
+    res.status(500).json({
+      message: 'error get',
+      serverMessage: error,
+    })
+  }
+}
+
+const getIdOrder = async (req, res) => {
+  try {
+    const [data] = await usersModel.getIdOrder();
+    res.json({
+      message : 'Get All User Success',
+      data: data
+    })
+  } catch (error) {
+    res.status(500).json({
+      message: 'error get',
+      serverMessage: error,
+    })
+  }
+}
+
 module.exports = {
   getAllUsers,
   createNewUsers,
@@ -105,4 +159,6 @@ module.exports = {
   deleteUser,
   getCheckUsers,
   createOrder,
+  getStatus,
+  submitOrder
 }

@@ -15,7 +15,7 @@ return (
                 <img className='logo w-16' src={Logo} alt="" />
             </div>
             <div className='navbar-nav flex items-center font-Poppins'>
-                <a className='mx-4 text-lg' href='/mitra'>Home</a>
+                <a className='mx-4 text-lg' href='/mitra/home'>Home</a>
                 <a className='mx-4 text-lg' href='/mitra/order'>Order</a>
                 <a className='mx-4 text-lg' href='/mitra/history'>History</a>
             </div>

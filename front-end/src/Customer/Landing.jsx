@@ -11,12 +11,12 @@ import { useNavigate } from 'react-router-dom';
 const Landing = () => {
   const navigate = useNavigate();
   function navuser(){
-    navigate("/home");
+    navigate("/sign");
   }
   function navmitra(){
-    navigate("/mitra");
+    navigate("/mitra/sign");
   }
-
+  localStorage.setItem('idUser', undefined);
   return (
   <div>
     <Navbar />

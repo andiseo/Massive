@@ -1,19 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar'
+import NavbarLogin from '../components/NavbarLogin'
 import Card from '../components/Card'
 import Footer1 from '../components/Footer'
 
 
 const Home = () => {
+  useEffect(() => {
+    // Mengambil idUser dari Local Storage
+    const idUser = localStorage.getItem('idUser');
+    
+    // Gunakan idUser sesuai kebutuhan di sini
+    console.log('idUser in order.jsx:', idUser);
+
+    // Pastikan untuk membersihkan Local Storage setelah digunakan (jika diperlukan)
+    // localStorage.removeItem('idUser');
+  }, []); // Gunakan dependensi kosong agar efek hanya dijalankan sekali setelah render pertama
+
   return (
     <div>
-      <Navbar />
+      <NavbarLogin />
       <img className='w-screen justify-center' src="/images/banner.png" alt="banner" />
       <div className="header text-center font-Poppins font-medium text-4xl my-12">Top Partners</div>
       <div className='partner container mx-auto flex justify-center'>
-        <Card />
-        <Card />
-        <Card />
+      <Card tittle='Move Master' />
+      <Card tittle='Rapid Move'/>
+      <Card tittle='Nobel Move'/>
       </div>
       <div className="header text-center font-Poppins font-medium text-4xl my-12">Additional Service</div>
       <div className="content container mx-auto flex justify-center gap-12">

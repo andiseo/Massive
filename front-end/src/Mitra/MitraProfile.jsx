@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Img from '../../images/banner.png'
-
+import NavbarMitra from '../components/NavbarMitra'
 
 const MitraProfile = () => {
+  const idUser = localStorage.getItem('idUser');
   const [formData, setFormData] = useState({
+    idpartnes: idUser,
     name: '',
     description: '',
     service: '',
@@ -30,11 +32,25 @@ const MitraProfile = () => {
         });
       })
       .catch(error => {
-        console.error('Error:', error);
+        axios.post('http://localhost:4000/partners/update', formData)
+        .then(response => {
+          console.log('Data terkirim:', response.data);
+          Swal.fire({
+            icon: 'success',
+            title: 'Successful',
+            text: 'You have successfully made your profile ^^!',
+          });
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          
+        });
       });
   };
 
   return (
+    <div>
+      <NavbarMitra/>
     <div className='flex flex-col justify-center bg-transparent'>
     <img src={Img} alt="" />
     <form className='bg-transparent flex flex-col items-center mx-auto w-1/2 ' onSubmit={handleSubmit}>
@@ -81,7 +97,8 @@ const MitraProfile = () => {
       {/* Button to submit the form */}
       <button className='w-full h-16 mt-2 rounded-md text-white text-lg'>Save</button>
     </form>
-  </div>  
+  </div> 
+  </div>
   );
 };
 

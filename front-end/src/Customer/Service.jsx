@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import NavbarLogin from '../components/NavbarLogin';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 // Import Detail component from the correct path
 import Detail from '../Customer/Detail';
+import { useNavigate } from 'react-router-dom';
+import Review from '../components/Review';
+import Dbox from '../components/Dbox';
 
 function Service() {
   const [data, setData] = useState([]);
   const [selectedItemId, setSelectedItemId] = useState(null); // State to store the selected item ID
-  
+  const navigate = useNavigate();
+
   const handleRefresh = () => {
     window.location.reload();
   };
@@ -28,11 +33,13 @@ function Service() {
 
   // Function to handle the click event on "Book Now" button
   const handleBookNow = (id) => {
+    localStorage.setItem('idMitra', id);
     setSelectedItemId(id); // Set the selected item ID
   };
 
   // Function to navigate to booking page (assuming this function exists)
   const navbooking = () => {
+    navigate("/booking");
     // Implement navigation logic to the booking page
     // For example: history.push('/booking'); or window.location.href = '/booking';
   };
@@ -41,24 +48,49 @@ function Service() {
   const renderDetails = () => {
     const selectedItem = data.find((item) => item.idpartnes === selectedItemId);
     if (selectedItem) {
+      // return (
+      //   <div className='fixed inset-0 flex items-center justify-center bg-white z-50 w-screen h-screen'>
+      //     <button onClick={handleRefresh} className=' text-cyan-50'>kembali</button> 
+      //     <img src='images/bimage.png' alt='Business Image' />
+      //     <div className='my-auto' style={{width: '587px', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'flex-start', gap:'10px'}}>
+      //       <div className='font-medium font-Poppins text-3xl'>{selectedItem.name}</div>
+      //       <div className='flex gap-2'>
+      //         <img src="images/pinmaps.png" alt='Map Pin' />
+      //         <div className='font-Poppins text-sm'>
+      //           {selectedItem.loc}
+      //         </div>
+      //       </div>
+      //       <div className='text-justify font-Poppins text-base' style={{width: '565px'}}>
+      //         {selectedItem.description}
+      //       </div>
+      //       <button onClick={navbooking} className='font-Poppins px-3 w-40 h-11 rounded-md text-white text-lg'>
+      //         Book Now
+      //       </button>
+      //     </div>
+      //   </div>
+      // );
       return (
-        <div className='fixed inset-0 flex items-center justify-center bg-white z-50 w-screen h-screen'>
-          <button onClick={handleRefresh} className=' text-cyan-50'>kembali</button> 
-          <img src='images/bimage.png' alt='Business Image' />
-          <div className='my-auto' style={{width: '587px', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'flex-start', gap:'10px'}}>
-            <div className='font-medium font-Poppins text-3xl'>{selectedItem.name}</div>
-            <div className='flex gap-2'>
-              <img src="images/pinmaps.png" alt='Map Pin' />
-              <div className='font-Poppins text-sm'>
-                {selectedItem.loc}
-              </div>
+        <div className='fixed inset-0 flex-col justify-center items-center bg-white z-50 w-screen h-auto'>
+          <div className='scrollable-details overflow-y-auto'>
+            <div className='flex items-center justify-center my-14'>
+              <img src='images/bimage.png' alt='Business Image' />
+                <div className='my-auto ml-10' style={{width: '587px', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'flex-start', gap:'10px'}}>
+                  <div className='font-medium font-Poppins text-3xl'>{selectedItem.name}</div>
+                  <div className='flex gap-2'>
+                    <img src="images/pinmaps.png" alt='Map Pin' />
+                    <div className='font-Poppins text-sm'>
+                      {selectedItem.loc}
+                    </div>
+                  </div>
+                  <div className='text-justify font-Poppins text-base' style={{width: '565px'}}>
+                    {selectedItem.description}
+                  </div>
+                  <button onClick={navbooking} className='px-3 w-40 h-11 rounded-md text-white text-lg'>Book Now</button>
+                  <button onClick={handleRefresh} className='px-3 w-40 h-11 rounded-md text-white text-lg'>Back</button> 
+                </div>
             </div>
-            <div className='text-justify font-Poppins text-base' style={{width: '565px'}}>
-              {selectedItem.description}
-            </div>
-            <button onClick={navbooking} className='font-Poppins px-3 w-40 h-11 rounded-md text-white text-lg'>
-              Book Now
-            </button>
+            <Dbox />
+            <Review />
           </div>
         </div>
       );
@@ -68,7 +100,7 @@ function Service() {
 
   return (
     <div className="Service">
-      <Navbar />
+      <NavbarLogin />
       <div className="details-section">{renderDetails()}</div>
       <div className="flex flex-wrap items-start justify-start h-auto py-5 mx-60">
         {data.map((item) => (
